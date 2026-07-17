@@ -18,12 +18,23 @@ import interviewRoutes from './features/interview/routes.js';
 import learningRoutes from './features/learning/routes.js';
 import ragRoutes from './features/rag/routes.js';
 import dashboardRoutes from './features/dashboard/routes.js';
+
+// const app: import('express').Express = express();
+
+// // ===========================================
+// // Security Middleware
+// // ===========================================
+// app.use(helmet());
 const app: import('express').Express = express();
+
+// Trust Render's proxy
+app.set('trust proxy', 1);
 
 // ===========================================
 // Security Middleware
 // ===========================================
 app.use(helmet());
+
 app.use(
   cors({
     origin: config.clientUrl,
