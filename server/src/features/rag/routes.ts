@@ -21,7 +21,9 @@ router.post(
       const doc = await ragService.uploadDocument(req.user._id, req.file, category, tags);
       
       // Don't return the giant chunks/buffer in the response
-      const { fileBuffer, chunks, ...safeDoc } = doc.toObject();
+      const safeDoc: any = doc.toObject();      
+      delete safeDoc.fileBuffer;
+      delete safeDoc.chunks;
       res.status(201).json({ success: true, data: safeDoc });
     } catch (error) {
       next(error);
