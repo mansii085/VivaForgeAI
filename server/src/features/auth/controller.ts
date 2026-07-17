@@ -7,7 +7,7 @@ import { ApiError } from '../../middleware/errorHandler.js';
 const REFRESH_COOKIE_OPTIONS = {
   httpOnly: true,
   secure: config.nodeEnv === 'production',
-  sameSite: 'strict' as const,
+  sameSite: 'none' as const,
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   path: '/api/auth',
 };
